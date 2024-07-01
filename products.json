@@ -1,0 +1,167 @@
+[
+  {
+    "id": 1,
+    "title": "Producto 1",
+    "description": "Desc. prod 1",
+    "code": "Code-Prod1",
+    "price": 1000,
+    "status": true,
+    "stock": 25,
+    "category": "Hardware",
+    "thumbnails": "/"
+  },
+  {
+    "id": 2,
+    "title": "Producto 2",
+    "description": "Desc. prod 2",
+    "code": "Code-Prod2",
+    "price": 100,
+    "status": true,
+    "stock": 200,
+    "category": "Software",
+    "thumbnails": "/"
+  },
+  {
+    "id": 3,
+    "title": "Producto 3",
+    "description": "Desc. prod 3",
+    "code": "Code-Prod3",
+    "price": 200,
+    "status": true,
+    "stock": 40,
+    "category": "Software",
+    "thumbnails": "/"
+  },
+  {
+    "id": 4,
+    "title": "Producto 4",
+    "description": "Desc. prod 4",
+    "code": "Code-Prod4",
+    "price": 350,
+    "status": true,
+    "stock": 64,
+    "category": "Software",
+    "thumbnails": "/"
+  },
+  {
+    "id": 5,
+    "title": "Producto 5",
+    "description": "Desc. prod 5",
+    "code": "Code-Prod5",
+    "price": 2000,
+    "status": true,
+    "stock": 16,
+    "category": "Hardware",
+    "thumbnails": "/"
+  },
+  {
+    "id": 6,
+    "title": "Producto 1",
+    "description": "Desc. prod 1",
+    "code": "Code-Prod1",
+    "price": 1000,
+    "status": true,
+    "stock": 10,
+    "category": "Hardware",
+    "thumbnails": "/"
+  },
+  {
+    "id": 7,
+    "title": "Producto 2",
+    "description": "Desc. prod 2",
+    "code": "Code-Prod2",
+    "price": 100,
+    "status": true,
+    "stock": 100,
+    "category": "Software",
+    "thumbnails": "/"
+  },
+  {
+    "id": 8,
+    "title": "Producto 3",
+    "description": "Desc. prod 3",
+    "code": "Code-Prod3",
+    "price": 200,
+    "status": true,
+    "stock": 20,
+    "category": "Software",
+    "thumbnails": "/"
+  },
+  {
+    "id": 9,
+    "title": "Producto 4",
+    "description": "Desc. prod 4",
+    "code": "Code-Prod4",
+    "price": 350,
+    "status": true,
+    "stock": 32,
+    "category": "Software",
+    "thumbnails": "/"
+  },
+  {
+    "id": 10,
+    "title": "Producto 5",
+    "description": "Desc. prod 5",
+    "code": "Code-Prod5",
+    "price": 2000,
+    "status": true,
+    "stock": 8,
+    "category": "Hardware",
+    "thumbnails": "/"
+  },
+  {
+    "id": 11,
+    "title": "Producto 1",
+    "description": "Desc. prod 1",
+    "code": "Code-Prod1",
+    "price": 1000,
+    "status": true,
+    "stock": 10,
+    "category": "Hardware",
+    "thumbnails": "/"
+  },
+  {
+    "id": 12,
+    "title": "Producto 2",
+    "description": "Desc. prod 2",
+    "code": "Code-Prod2",
+    "price": 100,
+    "status": true,
+    "stock": 100,
+    "category": "Software",
+    "thumbnails": "/"
+  },
+  {
+    "id": 13,
+    "title": "Producto 3",
+    "description": "Desc. prod 3",
+    "code": "Code-Prod3",
+    "price": 200,
+    "status": true,
+    "stock": 20,
+    "category": "Software",
+    "thumbnails": "/"
+  },
+  {
+    "id": 14,
+    "title": "Producto 4",
+    "description": "Desc. prod 4",
+    "code": "Code-Prod4",
+    "price": 350,
+    "status": true,
+    "stock": 32,
+    "category": "Software",
+    "thumbnails": "/"
+  },
+  {
+    "id": 15,
+    "title": "Producto 5",
+    "description": "Desc. prod 5",
+    "code": "Code-Prod5",
+    "price": 2000,
+    "status": true,
+    "stock": 8,
+    "category": "Hardware",
+    "thumbnails": "/"
+  }
+]
