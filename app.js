@@ -79,16 +79,23 @@ class ProductManager {
         const maxId = products.reduce((max, product) => (product.id > max ? product.id : max), 0);
         return maxId + 1;
     }
+    
+    async addProduct(title, description, code, price, stock, category, thumbnails) {
+        const products = await this.getProductsFromFile();
+        const id = await this.getNextId();
+        const newProduct = new Product(id, title, description, code, price, true, stock, category, thumbnails);
+        products.push(newProduct);
+        await this.saveProductsToFile(products);
+        return newProduct;
+    }
 
     async addOrUpdateProduct(title, description, code, price, status, stock, category, thumbnails) {
         const products = await this.getProductsFromFile();
         const existingProductIndex = products.findIndex(product => product.title === title);
 
         if (existingProductIndex !== -1) {
-            // Producto existente, actualizar stock
             products[existingProductIndex].stock += stock;
         } else {
-            // Producto nuevo, añadir a la lista
             const id = await this.getNextId();
             const newProduct = new Product(id, title, description, code, price, status, stock, category, thumbnails);
             products.push(newProduct);
@@ -96,20 +103,6 @@ class ProductManager {
 
         await this.saveProductsToFile(products);
         return products[existingProductIndex] || products[products.length - 1];
-    }
-
-    async addProduct(title, description, code, price, stock, category, thumbnails) {
-        const id = await this.getNextId();
-        const newProduct = new Product(id, title, description, code, price, true, stock, category, thumbnails);
-        const products = await this.getProductsFromFile();
-        products.push(newProduct);
-        await this.saveProductsToFile(products);
-        return newProduct;
-    }
-
-    async getProductById(id) {
-        const products = await this.getProductsFromFile();
-        return products.find(product => product.id === parseInt(id));
     }
 
     async updateProduct(id, updates) {
@@ -123,6 +116,11 @@ class ProductManager {
         products[productIndex] = updatedProduct;
         await this.saveProductsToFile(products);
         return updatedProduct;
+    }
+
+    async getProductById(id) {
+        const products = await this.getProductsFromFile();
+        return products.find(product => product.id === parseInt(id));
     }
 
     async deleteProduct(id) {
@@ -189,9 +187,9 @@ class CartManager {
     }
 
     async createCart() {
+        const carts = await this.getCartsFromFile();
         const id = await this.getNextId();
         const newCart = new Cart(id);
-        const carts = await this.getCartsFromFile();
         carts.push(newCart);
         await this.saveCartsToFile(carts);
         return newCart;
@@ -211,10 +209,8 @@ class CartManager {
         const cart = carts[cartIndex];
         const productIndex = cart.products.findIndex(product => product.product === parseInt(productId));
         if (productIndex !== -1) {
-            // Producto existente en el carrito, incrementar cantidad
             cart.products[productIndex].quantity += 1;
         } else {
-            // Producto nuevo en el carrito
             cart.products.push({ product: parseInt(productId), quantity: 1 });
         }
         carts[cartIndex] = cart;
@@ -223,11 +219,11 @@ class CartManager {
     }
 }
 
-// Instanciando ProductManager y CartManager
+
 const productManager = new ProductManager('products.json');
 const cartManager = new CartManager('carts.json');
 
-// Configuración de las rutas de productos
+
 app.get("/", async (req, res) => {
     const { limit } = req.query;
     const products = await productManager.getProductsFromFile();
@@ -250,7 +246,6 @@ app.get("/:pid", async (req, res) => {
 app.post("/", async (req, res) => {
     const { title, description, code, price, stock, category, thumbnails } = req.body;
 
-    // Verificar que todos los campos obligatorios estén presentes
     if (!title || !description || !code || price === undefined || !stock || !category) {
         return res.status(400).send({ error: "Todos los campos son obligatorios, excepto thumbnails" });
     }
@@ -298,7 +293,7 @@ app.delete("/:pid", async (req, res) => {
     }
 });
 
-// Configuración del router de carritos
+
 const cartRouter = express.Router();
 
 cartRouter.post("/", async (req, res) => {
@@ -334,7 +329,6 @@ cartRouter.post("/:cid/product/:pid", async (req, res) => {
     }
 });
 
-// Uso de cartRouter en la aplicación principal
 app.use("/api/carts", cartRouter);
 
 console.log(`Server is running on http://localhost:${PORT}`);
